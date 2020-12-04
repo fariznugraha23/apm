@@ -10,6 +10,7 @@ class kriteria_apms extends Model
     use HasFactory;
     protected $table = "kriteria_apms";
     public $timestamps = false;
+    protected $primaryKey = "id_kriteria";
     protected $fillable = [
         'nama_kriteria'
     ];

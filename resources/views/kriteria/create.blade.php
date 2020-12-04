@@ -4,10 +4,10 @@
 <div class="row mt-5 mb-5">
     <div class="col-lg-12 margin-tb">
         <div class="float-left">
-            <h2>Create New Area</h2>
+            <h2>Create New Kriteria</h2>
         </div>
         <div class="float-right">
-            <a class="btn btn-secondary" href="{{ route('apm.index') }}"> Back</a>
+            <a class="btn btn-secondary" href="{{ route('kriteria.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
     </div>
 @endif
  
-<form action="{{ route('apm.storeKriteria') }}" method="POST">
+<form action="{{ route('kriteria.store') }}" method="POST">
     @csrf
  
     <div class="row">

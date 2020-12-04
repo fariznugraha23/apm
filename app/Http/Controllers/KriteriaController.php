@@ -16,7 +16,7 @@ class KriteriaController extends Controller
      */
     public function index()
     {
-        $kriteria = kriteria_apms::paginate(5);
+        $kriteria = kriteria_apms::simplePaginate(10);
  
         return view('kriteria.index',compact('kriteria'));
     }
@@ -28,7 +28,8 @@ class KriteriaController extends Controller
      */
     public function create()
     {
-        //
+        $kriteria = kriteria_apms::all();
+        return view('kriteria.create',compact('kriteria'));
     }
 
     /**
@@ -46,8 +47,8 @@ class KriteriaController extends Controller
  
         kriteria_apms::create($request->all());
  
-        return redirect()->route('apm.index')
-            ->with('success','Post created successfully.');
+        return redirect()->route('kriteria.index')
+            ->with('success','Kriteria created successfully.');
     }
 
     /**
@@ -67,9 +68,10 @@ class KriteriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_kriteria)
     {
-        //
+        $kriteria = kriteria_apms::find($id_kriteria);
+        return view('kriteria.edit',compact('kriteria'));
     }
 
     /**
@@ -81,7 +83,15 @@ class KriteriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kriteria' => 'required',
+            
+        ]);
+        $kriteria = kriteria_apms::find($id);    
+        $kriteria->update($request->all());
+ 
+        return redirect()->route('kriteria.index')
+            ->with('success','Kriteria updated successfully');
     }
 
     /**
@@ -92,6 +102,10 @@ class KriteriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kriteria = kriteria_apms::find($id);
+        $kriteria->delete();
+ 
+        return redirect()->route('kriteria.index')
+        ->with('success','Kriteria deleted successfully');
     }
 }

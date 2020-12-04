@@ -46,7 +46,7 @@ class AreaController extends Controller
         area_apms::create($request->all());
  
         return redirect()->route('area.index')
-            ->with('success','Post created successfully.');
+            ->with('success','Area created successfully.');
     }
 
     /**

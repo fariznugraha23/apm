@@ -8,6 +8,7 @@
             </div>
             <div class="float-right">
                 <a class="btn btn-success" href="{{ route('area.create') }}"> Tambah Area</a>
+                <a class="btn btn-secondary" href="{{ route('apm.index') }}"> APM</a>
      
             </div>
         </div>
